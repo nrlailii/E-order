@@ -1,0 +1,12 @@
+Tambahkan alias middleware berikut ke konfigurasi withMiddleware() pada bootstrap/app.php Laravel 11/12:
+
+use App\Http\Middleware\EnsureUserHasRole;
+use Illuminate\Foundation\Configuration\Middleware;
+
+->withMiddleware(function (Middleware $middleware): void {
+    $middleware->alias([
+        'role' => EnsureUserHasRole::class,
+    ]);
+})
+
+Catatan: jangan mengganti seluruh bootstrap/app.php. Gabungkan alias ini dengan konfigurasi yang sudah ada.
